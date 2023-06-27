@@ -4,7 +4,7 @@ const { google } = require('googleapis');
 const CLIENT_ID = '901945594550-m6qs62omqshhtp0ljacfdqm1u1bu84ea.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04CBoG8ivcy45CgYIARAAGAQSNwF-L9IrKIaOTnScbmGuwSMn7DsVBr5NSQVsFjzH-8h2a6infomDsSqwbEt-ksjh-Q2zzQ0wUwc';
+const REFRESH_TOKEN = '1//04rEmuBknWwl4CgYIARAAGAQSNwF-L9Ir1TgoOCHOXFuTUft88b2eRjtYq1qMfOfbdkCmW9af36I2OPGVvVtIBgEf3i27MrsnqE0';
 
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI)
 const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
@@ -30,7 +30,11 @@ async function sendMail(){
             to: 'ksarathe9@gmail.com',
             subject: 'Sarathe Ji ko raammmmm',
             text: 'API ki taraf se Rammmm bhiyaaa kayi haal chaal',
-            html: '<h1>API ki taraf se Rammmm bhiyaaa kayi haal chaal</h1>'
+            html: '<h1>API ki taraf se Rammmm bhiyaaa kayi haal chaal</h1>',
+            attachments: [{
+                filename: 'image_lio_bhiya.png',
+                path: './Screenshot.png'
+            }]
         };
         const result = await transport.sendMail(mailOptions)
         return result;
