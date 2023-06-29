@@ -1,5 +1,27 @@
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
+const express = require ('express')
+const fs = require('fs');
+const pdf = require('html-pdf');
+const app = express();
+
+app.get('/home', async (req,res,next)=>{
+    // console.log("middle");
+var html = fs.readFileSync('./invoice.html','utf-8')
+let result = {
+    id: 12,
+    name: 'Test Demo'
+}
+let options = {
+    format: 'Letter'
+}
+pdf.create(html, options).toFile('./invoice.pdf',function(err,res) {
+    if (err) return console.log(err.message);
+    return console.log(res);
+})
+res.status(200).json(result)
+})
+
 
 const CLIENT_ID = '901945594550-m6qs62omqshhtp0ljacfdqm1u1bu84ea.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
@@ -45,3 +67,5 @@ async function sendMail(){
 
 sendMail().then((result) => console.log('Email Sent...', result))
 .catch((error) => console.log(err.message))
+
+module.exports = app;
