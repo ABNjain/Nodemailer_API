@@ -11,6 +11,13 @@ require('dotenv').config();
 // const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 // const REFRESH_TOKEN = '1//04rEmuBknWwl4CgYIARAAGAQSNwF-L9Ir1TgoOCHOXFuTUft88b2eRjtYq1qMfOfbdkCmW9af36I2OPGVvVtIBgEf3i27MrsnqE0';
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+
+const convertFile = require("./convert");
+
+
+
 app.get('/home', async (req,res,next)=>{
     // console.log("middle");
 var html = fs.readFileSync('./invoice.html','utf-8')
@@ -69,6 +76,9 @@ async function sendMail(){
         return error
     }
 }
+
+app.use("/file", convertFile);
+
 
 // sendMail().then((result) => console.log('Email Sent...', result))
 // .catch((error) => console.log(err.message))

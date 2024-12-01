@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Conversion</title>
+</head>
+<body>
+    <h1>Convert Files</h1>
+
+    <!-- Form for CSV to JSON -->
+    <form action="/file/convert" method="POST" enctype="multipart/form-data">
+        <h2>CSV to JSON</h2>
+        <input type="file" name="file" accept=".csv" required />
+        <button type="submit">Convert to JSON</button>
+    </form>
+    
+    <form action="/file/json-to-csv" method="POST" enctype="multipart/form-data">
+        <h2>JSON to CSV</h2>
+        <input type="file" name="file" accept=".json" required />
+        <button type="submit">Convert to CSV</button>
+    </form>
+
+    <!-- <form action="/file/json-to-dbf" method="POST" enctype="multipart/form-data">
+        <h2>JSON to DBF</h2>
+        <input type="file" name="file" accept=".json" required />
+        <button type="submit">Convert to DBF</button>
+    </form>
+
+    <form action="/file/dbf-to-json" method="POST" enctype="multipart/form-data">
+        <h2>DBF to JSON</h2>
+        <input type="file" name="file" accept=".json" required />
+        <button type="submit">Convert to JSON</button>
+    </form> -->
+    
+    
+    
+</body>
+</html>
