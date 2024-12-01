@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./app');
 const hostname = '127.0.0.1';
-const port = 3004;
+const port = process.env.PORT || 3004;
 const path = require("path")
 
 
